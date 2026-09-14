@@ -549,3 +549,57 @@ footer{
     transition: opacity .3s ease;
 
 }
+/* Hero Glow Effects */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    top:-150px;
+    right:-150px;
+
+    border-radius:50%;
+
+    background:rgba(0,194,255,.12);
+
+    filter:blur(120px);
+
+    z-index:0;
+}
+
+.hero::after{
+
+    content:'';
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    left:-100px;
+    bottom:-100px;
+
+    border-radius:50%;
+
+    background:rgba(0,103,192,.12);
+
+    filter:blur(100px);
+
+    z-index:0;
+}
+
+.hero-content,
+.hero-tech{
+    position:relative;
+    z-index:2;
+}
