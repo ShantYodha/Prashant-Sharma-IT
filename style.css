@@ -544,7 +544,15 @@ footer{
 }
 
 .navbar a.active{
-    color:var(--accent);
+
+    color:#00C2FF !important;
+
+    font-weight:600;
+
+    text-shadow:
+        0 0 10px rgba(0,194,255,.6),
+        0 0 20px rgba(0,194,255,.3);
+
 }
 
 .navbar a.active::after{
