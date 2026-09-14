@@ -1,11 +1,15 @@
-// Smooth reveal animations
+document.documentElement.classList.add("js-enabled");
 
-const observer = new IntersectionObserver(entries => {
+/* =========================
+   Scroll Reveal Animation
+========================= */
 
-    entries.forEach(entry => {
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach((entry) => {
 
         if (entry.isIntersecting) {
-            entry.target.classList.add('show');
+            entry.target.classList.add("show");
         }
 
     });
@@ -14,20 +18,24 @@ const observer = new IntersectionObserver(entries => {
     threshold: 0.15
 });
 
-document.querySelectorAll('.section').forEach(section => {
+document.querySelectorAll(".section").forEach((section) => {
     observer.observe(section);
 });
 
-// Navbar background effect
 
-window.addEventListener('scroll', () => {
+/* =========================
+   Navbar Scroll Effect
+========================= */
 
-    const nav = document.querySelector('.navbar');
+window.addEventListener("scroll", () => {
+
+    const nav = document.querySelector(".navbar");
 
     if (window.scrollY > 50) {
 
         nav.style.background = "rgba(5,17,31,0.98)";
-        nav.style.boxShadow = "0 5px 20px rgba(0,0,0,0.35)";
+        nav.style.boxShadow =
+            "0 5px 20px rgba(0,0,0,0.35)";
 
     } else {
 
@@ -37,56 +45,62 @@ window.addEventListener('scroll', () => {
 
 });
 
-// Tech card hover animation enhancement
 
-document.querySelectorAll('.tech-card').forEach(card => {
+/* =========================
+   Hover Effects
+========================= */
 
-    card.addEventListener('mouseenter', () => {
+document.querySelectorAll(".tech-card").forEach((card) => {
 
-        card.style.transform = 'translateY(-10px) scale(1.03)';
+    card.addEventListener("mouseenter", () => {
+
+        card.style.transform =
+            "translateY(-10px) scale(1.03)";
 
     });
 
-    card.addEventListener('mouseleave', () => {
+    card.addEventListener("mouseleave", () => {
 
-        card.style.transform = 'translateY(0px) scale(1)';
+        card.style.transform =
+            "translateY(0px) scale(1)";
     });
 
 });
 
-// Domain cards glow effect
+document.querySelectorAll(".domain-card").forEach((card) => {
 
-document.querySelectorAll('.domain-card').forEach(card => {
-
-    card.addEventListener('mouseenter', () => {
+    card.addEventListener("mouseenter", () => {
 
         card.style.boxShadow =
             "0 10px 30px rgba(0,194,255,0.25)";
     });
 
-    card.addEventListener('mouseleave', () => {
+    card.addEventListener("mouseleave", () => {
 
         card.style.boxShadow = "none";
     });
 
 });
 
-// Dynamic title rotation
+
+/* =========================
+   Hero Tag Rotation
+========================= */
 
 const titles = [
 
-    "Enterprise Technology Operations Leader",
-    "Microsoft 365 Specialist",
-    "Network Security Professional",
-    "Digital Workplace Leader",
-    "Cloud & Infrastructure Manager",
-    "AI & Copilot Advocate"
+    "Driving Secure, Scalable & Intelligent Digital Workplaces",
+    "Microsoft 365 Leadership",
+    "Enterprise Technology Operations",
+    "Network Security & Connectivity",
+    "Digital Workplace Transformation",
+    "AI & Copilot Enablement"
 
 ];
 
 let currentIndex = 0;
 
-const heroTag = document.querySelector('.hero-tag');
+const heroTag = document.querySelector(".hero-tag");
 
 if (heroTag) {
 
@@ -102,7 +116,9 @@ if (heroTag) {
 
         setTimeout(() => {
 
-            heroTag.textContent = titles[currentIndex];
+            heroTag.textContent =
+                titles[currentIndex];
+
             heroTag.style.opacity = 1;
 
         }, 300);
@@ -110,38 +126,62 @@ if (heroTag) {
     }, 3500);
 
 }
-// Active navigation highlighting
 
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".navbar a");
 
-window.addEventListener("scroll", () => {
+/* =========================
+   Active Navigation Highlight
+========================= */
 
-    let current = "";
+const sections =
+    document.querySelectorAll("section[id]");
 
-    sections.forEach(section => {
+const navLinks =
+    document.querySelectorAll(".navbar a");
 
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.offsetHeight;
+function updateActiveMenu() {
 
-        if (window.scrollY >= sectionTop) {
+    let currentSection = "";
 
-            current = section.getAttribute("id");
+    sections.forEach((section) => {
+
+        const top =
+            section.offsetTop - 150;
+
+        const height =
+            section.offsetHeight;
+
+        if (
+            window.scrollY >= top &&
+            window.scrollY < top + height
+        ) {
+            currentSection =
+                section.getAttribute("id");
         }
 
     });
 
-    navLinks.forEach(link => {
+    navLinks.forEach((link) => {
 
         link.classList.remove("active");
 
-        const href = link.getAttribute("href");
+        const href =
+            link.getAttribute("href");
 
-        if (href === "#" + current) {
+        if (href === "#" + currentSection) {
 
             link.classList.add("active");
         }
 
     });
 
-});
+}
+
+window.addEventListener(
+    "scroll",
+    updateActiveMenu
+);
+
+window.addEventListener(
+    "load",
+    updateActiveMenu
+);
