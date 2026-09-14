@@ -145,7 +145,7 @@ function updateActiveMenu() {
     sections.forEach((section) => {
 
         const top =
-            section.offsetTop - 150;
+            section.offsetTop - 220;
 
         const height =
             section.offsetHeight;
