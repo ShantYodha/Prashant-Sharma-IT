@@ -185,3 +185,31 @@ window.addEventListener(
     "load",
     updateActiveMenu
 );
+/* =========================
+   Mobile Menu
+========================= */
+
+const hamburger =
+    document.getElementById("hamburger");
+
+const navMenu =
+    document.getElementById("navMenu");
+
+hamburger.addEventListener("click", () => {
+
+    navMenu.classList.toggle("show");
+
+});
+
+/* Close menu after click */
+
+document.querySelectorAll("#navMenu a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navMenu.classList.remove("show");
+
+    });
+
+});
