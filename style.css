@@ -516,31 +516,41 @@ footer{
 }
 
 }
-/* Scroll Animations */
+/* =================================
+   Scroll Animations
+================================= */
 
 .section {
-
     opacity: 0;
-
     transform: translateY(40px);
-
     transition: all .8s ease;
-
 }
 
 .section.show {
-
     opacity: 1;
-
     transform: translateY(0);
-
 }
 
 .hero {
-/* Active Navigation Tab */
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.hero-tag {
+    transition: opacity .3s ease;
+}
+
+/* =================================
+   Active Navigation
+================================= */
 
 .navbar a{
     position:relative;
+    transition:.3s;
+}
+
+.navbar a:hover{
+    color:#00C2FF;
 }
 
 .navbar a.active{
@@ -562,40 +572,28 @@ footer{
     position:absolute;
 
     left:0;
-    bottom:-8px;
+    bottom:-10px;
 
     width:100%;
-    height:3px;
+    height:4px;
 
-    border-radius:10px;
+    border-radius:100px;
 
     background:linear-gradient(
         90deg,
-        var(--primary),
-        var(--accent)
+        #00A4EF,
+        #00C2FF
     );
 
     box-shadow:
-        0 0 10px rgba(0,194,255,.8),
-        0 0 20px rgba(0,194,255,.4);
-}
-.navbar a:hover{
-
-    color:#00C2FF;
-
-}
-    opacity: 1 !important;
-
-    transform: none !important;
+        0 0 12px rgba(0,194,255,.9),
+        0 0 24px rgba(0,194,255,.5);
 
 }
 
-.hero-tag {
-
-    transition: opacity .3s ease;
-
-}
-/* Hero Glow Effects */
+/* =================================
+   Hero Glow Effects
+================================= */
 
 .hero{
     position:relative;
