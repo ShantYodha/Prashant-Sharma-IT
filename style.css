@@ -579,7 +579,11 @@ footer{
         0 0 10px rgba(0,194,255,.8),
         0 0 20px rgba(0,194,255,.4);
 }
-``
+.navbar a:hover{
+
+    color:#00C2FF;
+
+}
     opacity: 1 !important;
 
     transform: none !important;
