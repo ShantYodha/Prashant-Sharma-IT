@@ -41,6 +41,7 @@ window.addEventListener("scroll", () => {
 
         nav.style.background = "rgba(5,17,31,0.90)";
         nav.style.boxShadow = "none";
+
     }
 
 });
@@ -73,6 +74,7 @@ document.querySelectorAll(".domain-card").forEach((card) => {
 
         card.style.boxShadow =
             "0 10px 30px rgba(0,194,255,0.25)";
+
     });
 
     card.addEventListener("mouseleave", () => {
@@ -154,8 +156,10 @@ function updateActiveMenu() {
             window.scrollY >= top &&
             window.scrollY < top + height
         ) {
+
             currentSection =
                 section.getAttribute("id");
+
         }
 
     });
@@ -164,12 +168,13 @@ function updateActiveMenu() {
 
         link.classList.remove("active");
 
-        const href =
-            link.getAttribute("href");
-
-        if (href === "#" + currentSection) {
+        if (
+            link.getAttribute("href") ===
+            "#" + currentSection
+        ) {
 
             link.classList.add("active");
+
         }
 
     });
@@ -185,8 +190,12 @@ window.addEventListener(
     "load",
     updateActiveMenu
 );
+
+updateActiveMenu();
+
+
 /* =========================
-   Mobile Menu
+   Mobile Hamburger Menu
 ========================= */
 
 const hamburger =
@@ -195,21 +204,24 @@ const hamburger =
 const navMenu =
     document.getElementById("navMenu");
 
-hamburger.addEventListener("click", () => {
+if (hamburger) {
 
-    navMenu.classList.toggle("show");
+    hamburger.addEventListener("click", () => {
 
-});
-
-/* Close menu after click */
-
-document.querySelectorAll("#navMenu a")
-.forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navMenu.classList.remove("show");
+        navMenu.classList.toggle("show");
 
     });
 
-});
+}
+
+document
+    .querySelectorAll("#navMenu a")
+    .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navMenu.classList.remove("show");
+
+        });
+
+    });
