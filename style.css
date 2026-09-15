@@ -584,11 +584,10 @@ footer{
         list-style:none;
     }
 
-    .navbar a{
-        display:block;
-        padding:12px 16px;
-    }
-
+    .navbar ul a{
+    display:block;
+    padding:12px 16px;
+}
     .hero{
         text-align:center;
         padding:130px 20px 40px;
