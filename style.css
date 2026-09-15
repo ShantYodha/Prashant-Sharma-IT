@@ -4,14 +4,13 @@
 ================================================= */
 
 :root{
-    --bg:            #F4F2EF;   /* warm off-white page */
-    --bg-alt:        #EBE8E3;   /* alternating section */
-    --surface:       #FFFFFF;   /* cards */
-    --ink:           #14110F;   /* near-black text */
-    --ink-soft:      #5C5750;   /* muted body text */
-    --hairline:      #DBD6CF;   /* borders */
-    --accent:        #14110F;   /* primary button */
-    --accent-soft:   #C9C2B8;   /* subtle fills */
+    --bg:            #F4F2EF;
+    --bg-alt:        #EBE8E3;
+    --surface:       #FFFFFF;
+    --ink:           #14110F;
+    --ink-soft:      #5C5750;
+    --hairline:      #DBD6CF;
+    --accent-soft:   #C9C2B8;
     --radius:        20px;
     --maxw:          1240px;
 }
@@ -45,7 +44,7 @@ body{
     left:50%;
     transform:translateX(-50%);
     width:min(var(--maxw), calc(100% - 40px));
-    padding:12px 14px 12px 14px;
+    padding:12px 14px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -110,10 +109,10 @@ body{
     max-width:var(--maxw);
     margin:0 auto;
     display:grid;
-    grid-template-columns:1.25fr .75fr;
-    gap:60px;
+    grid-template-columns:1.1fr .9fr;
+    gap:70px;
     align-items:center;
-    padding:160px 20px 90px;
+    padding:160px 20px 60px;
     position:relative;
 }
 
@@ -123,7 +122,6 @@ body{
     border-radius:100px;
     font-size:13px;
     font-weight:500;
-    letter-spacing:.2px;
     color:var(--ink-soft);
     background:var(--surface);
     border:1px solid var(--hairline);
@@ -196,11 +194,65 @@ body{
     color:var(--bg);
 }
 
-/* Technology tiles */
+/* =================================================
+   PROFILE PHOTO
+================================================= */
+
+.hero-visual{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.hero-photo{
+    position:relative;
+    width:100%;
+    max-width:430px;
+    border-radius:28px;
+    overflow:hidden;
+    border:1px solid var(--hairline);
+    background:var(--bg-alt);
+    box-shadow:0 30px 70px rgba(20,17,15,.12);
+}
+
+.hero-photo::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        180deg,
+        rgba(244,242,239,0) 55%,
+        rgba(244,242,239,.35) 100%
+    );
+    pointer-events:none;
+}
+
+.profile-image{
+    display:block;
+    width:100%;
+    height:540px;
+    object-fit:cover;
+    object-position:center top;
+    transition:transform .6s cubic-bezier(.2,.7,.3,1);
+}
+
+.hero-photo:hover .profile-image{
+    transform:scale(1.03);
+}
+
+/* =================================================
+   TECHNOLOGY STRIP
+================================================= */
+
+.stack-strip{
+    padding-top:0;
+    padding-bottom:70px;
+}
 
 .hero-tech{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
     gap:10px;
 }
 
@@ -219,10 +271,6 @@ body{
 .tech-card:hover{
     transform:translateY(-4px);
     box-shadow:0 12px 28px rgba(20,17,15,.08);
-}
-
-.hero-tech .tech-card:last-child{
-    grid-column:1 / -1;
 }
 
 /* =================================================
@@ -476,8 +524,8 @@ footer{
 
     .hero{
         grid-template-columns:1fr;
-        gap:44px;
-        padding:140px 20px 70px;
+        gap:48px;
+        padding:140px 20px 50px;
     }
 
     .hero h2,
@@ -485,8 +533,12 @@ footer{
         max-width:none;
     }
 
-    .hero-tech{
-        grid-template-columns:repeat(2,1fr);
+    .hero-photo{
+        max-width:380px;
+    }
+
+    .profile-image{
+        height:460px;
     }
 }
 
@@ -536,7 +588,7 @@ footer{
 
     .hero{
         text-align:center;
-        padding:130px 20px 60px;
+        padding:130px 20px 40px;
     }
 
     .hero-buttons{
@@ -550,12 +602,21 @@ footer{
         text-align:center;
     }
 
-    .hero-tech{
-        grid-template-columns:1fr;
+    .hero-photo{
+        max-width:300px;
+        border-radius:24px;
     }
 
-    .hero-tech .tech-card:last-child{
-        grid-column:auto;
+    .profile-image{
+        height:370px;
+    }
+
+    .stack-strip{
+        padding-bottom:50px;
+    }
+
+    .hero-tech{
+        grid-template-columns:repeat(2,1fr);
     }
 
     .section{
@@ -606,6 +667,18 @@ footer{
 
     .hero-tag{
         font-size:12px;
+    }
+
+    .hero-photo{
+        max-width:260px;
+    }
+
+    .profile-image{
+        height:320px;
+    }
+
+    .hero-tech{
+        grid-template-columns:1fr;
     }
 
     .domain-card{
