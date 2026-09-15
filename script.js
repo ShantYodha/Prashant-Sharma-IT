@@ -15,7 +15,7 @@ const observer = new IntersectionObserver((entries) => {
     });
 
 }, {
-    threshold: 0.15
+    threshold: 0.12
 });
 
 document.querySelectorAll(".section").forEach((section) => {
@@ -31,56 +31,15 @@ window.addEventListener("scroll", () => {
 
     const nav = document.querySelector(".navbar");
 
-    if (window.scrollY > 50) {
+    if (!nav) return;
 
-        nav.style.background = "rgba(5,17,31,0.98)";
-        nav.style.boxShadow =
-            "0 5px 20px rgba(0,0,0,0.35)";
-
+    if (window.scrollY > 40) {
+        nav.style.background = "rgba(255,255,255,0.92)";
+        nav.style.boxShadow = "0 10px 30px rgba(20,17,15,0.07)";
     } else {
-
-        nav.style.background = "rgba(5,17,31,0.90)";
+        nav.style.background = "rgba(255,255,255,0.72)";
         nav.style.boxShadow = "none";
-
     }
-
-});
-
-
-/* =========================
-   Hover Effects
-========================= */
-
-document.querySelectorAll(".tech-card").forEach((card) => {
-
-    card.addEventListener("mouseenter", () => {
-
-        card.style.transform =
-            "translateY(-10px) scale(1.03)";
-
-    });
-
-    card.addEventListener("mouseleave", () => {
-
-        card.style.transform =
-            "translateY(0px) scale(1)";
-    });
-
-});
-
-document.querySelectorAll(".domain-card").forEach((card) => {
-
-    card.addEventListener("mouseenter", () => {
-
-        card.style.boxShadow =
-            "0 10px 30px rgba(0,194,255,0.25)";
-
-    });
-
-    card.addEventListener("mouseleave", () => {
-
-        card.style.boxShadow = "none";
-    });
 
 });
 
@@ -118,9 +77,7 @@ if (heroTag) {
 
         setTimeout(() => {
 
-            heroTag.textContent =
-                titles[currentIndex];
-
+            heroTag.textContent = titles[currentIndex];
             heroTag.style.opacity = 1;
 
         }, 300);
@@ -134,11 +91,8 @@ if (heroTag) {
    Active Navigation Highlight
 ========================= */
 
-const sections =
-    document.querySelectorAll("section[id]");
-
-const navLinks =
-    document.querySelectorAll(".navbar a");
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".navbar a[href^='#']");
 
 function updateActiveMenu() {
 
@@ -146,20 +100,11 @@ function updateActiveMenu() {
 
     sections.forEach((section) => {
 
-        const top =
-            section.offsetTop - 220;
+        const top = section.offsetTop - 220;
+        const height = section.offsetHeight;
 
-        const height =
-            section.offsetHeight;
-
-        if (
-            window.scrollY >= top &&
-            window.scrollY < top + height
-        ) {
-
-            currentSection =
-                section.getAttribute("id");
-
+        if (window.scrollY >= top && window.scrollY < top + height) {
+            currentSection = section.getAttribute("id");
         }
 
     });
@@ -168,28 +113,16 @@ function updateActiveMenu() {
 
         link.classList.remove("active");
 
-        if (
-            link.getAttribute("href") ===
-            "#" + currentSection
-        ) {
-
+        if (link.getAttribute("href") === "#" + currentSection) {
             link.classList.add("active");
-
         }
 
     });
 
 }
 
-window.addEventListener(
-    "scroll",
-    updateActiveMenu
-);
-
-window.addEventListener(
-    "load",
-    updateActiveMenu
-);
+window.addEventListener("scroll", updateActiveMenu);
+window.addEventListener("load", updateActiveMenu);
 
 updateActiveMenu();
 
@@ -198,30 +131,21 @@ updateActiveMenu();
    Mobile Hamburger Menu
 ========================= */
 
-const hamburger =
-    document.getElementById("hamburger");
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("navMenu");
 
-const navMenu =
-    document.getElementById("navMenu");
-
-if (hamburger) {
+if (hamburger && navMenu) {
 
     hamburger.addEventListener("click", () => {
-
         navMenu.classList.toggle("show");
+    });
+
+    document.querySelectorAll("#navMenu a").forEach((link) => {
+
+        link.addEventListener("click", () => {
+            navMenu.classList.remove("show");
+        });
 
     });
 
 }
-
-document
-    .querySelectorAll("#navMenu a")
-    .forEach(link => {
-
-        link.addEventListener("click", () => {
-
-            navMenu.classList.remove("show");
-
-        });
-
-    });
