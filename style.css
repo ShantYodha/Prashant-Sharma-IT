@@ -82,7 +82,7 @@ body{
     padding-right:6px;
 }
 
-.navbar a{
+.navbar ul a{
     position:relative;
     text-decoration:none;
     color:var(--ink-soft);
@@ -93,12 +93,12 @@ body{
     transition:color .25s ease, background .25s ease;
 }
 
-.navbar a:hover{
+.navbar ul a:hover{
     color:var(--ink);
     background:rgba(20,17,15,.05);
 }
 
-.navbar a.active{
+.navbar ul a.active{
     color:var(--bg);
     background:var(--ink);
 }
