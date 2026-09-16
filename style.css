@@ -1034,3 +1034,23 @@ footer{
         padding:28px 24px;
     }
 }
+/* =================================================
+   SERIF HEADING SPACING
+================================================= */
+
+.hero h1{
+    letter-spacing:0;
+    word-spacing:.04em;
+}
+
+.section-header h2{
+    letter-spacing:.005em;
+    word-spacing:.05em;
+    line-height:1.15;
+}
+
+.screen-panel h3{
+    letter-spacing:.005em;
+    word-spacing:.05em;
+    line-height:1.25;
+}
