@@ -1081,3 +1081,27 @@ h1, h2, h3, h4, h5, h6{
     word-spacing:.04em;
     line-height:1.5;
 }
+/* =================================================
+   HEADING TYPEFACE
+================================================= */
+
+.hero h1,
+.section-header h2,
+.screen-panel h3{
+    font-family:'Fraunces',Georgia,serif !important;
+    font-weight:400;
+    letter-spacing:.01em !important;
+    word-spacing:.06em;
+}
+
+.hero h1{
+    line-height:1.1;
+}
+
+.section-header h2{
+    line-height:1.22;
+}
+
+.screen-panel h3{
+    line-height:1.3;
+}
