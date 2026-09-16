@@ -92,7 +92,7 @@ if (heroTag) {
 ========================= */
 
 const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".navbar a[href^='#']");
+const navLinks = document.querySelectorAll("#navMenu a");
 
 function updateActiveMenu() {
 
@@ -149,3 +149,43 @@ if (hamburger && navMenu) {
     });
 
 }
+
+
+/* =========================
+   Technology Command Center
+========================= */
+
+const racks       = document.querySelectorAll(".rack");
+const panels      = document.querySelectorAll(".screen-panel");
+const screenLabel = document.getElementById("screenLabel");
+
+function showScreen(key, labelText) {
+
+    racks.forEach((r) => {
+        const on = r.dataset.screen === key;
+        r.classList.toggle("is-active", on);
+        r.setAttribute("aria-selected", on ? "true" : "false");
+    });
+
+    panels.forEach((p) => {
+        p.classList.toggle("is-active", p.dataset.panel === key);
+    });
+
+    if (screenLabel && labelText) {
+        screenLabel.textContent = labelText;
+    }
+
+}
+
+racks.forEach((rack) => {
+
+    rack.addEventListener("click", () => {
+
+        const key   = rack.dataset.screen;
+        const label = rack.querySelector(".rack-title").textContent;
+
+        showScreen(key, label);
+
+    });
+
+});
